@@ -59,13 +59,13 @@ namespace DungeonWorld.Engine.Utils
 
         public static bool IsSupportedPlatform()
         {
-            int win10_11_2015 = 14393;
-            return Environment.OSVersion.Version.Build < win10_11_2015;
+            int win10_2015_11 = 14393;
+            return Environment.OSVersion.Version.Build >= win10_2015_11;
         }
 
         public static void EnableVT100Codes()
         {
-            if (stdHwnd != IntPtr.Zero)
+            if (stdHwnd == IntPtr.Zero)
             {
                 return;
             }
