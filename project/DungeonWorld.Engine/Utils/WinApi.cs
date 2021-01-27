@@ -53,9 +53,14 @@ namespace DungeonWorld.Engine.Utils
 
             if (consoleHwnd != IntPtr.Zero)
             {
-                // get system menu for disabling window buttons
                 systemMenu = GetSystemMenu(consoleHwnd, false);
             }
+        }
+
+        public static bool IsSupportedPlatform()
+        {
+            int win10_11_2015 = 14393;
+            return Environment.OSVersion.Version.Build < win10_11_2015;
         }
 
         public static void EnableVT100Codes()
@@ -67,6 +72,8 @@ namespace DungeonWorld.Engine.Utils
 
             int mode;
             GetConsoleMode(stdHwnd, out mode);
+
+            // requires windows 10 anniversary update
             SetConsoleMode(stdHwnd, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
         }
 
