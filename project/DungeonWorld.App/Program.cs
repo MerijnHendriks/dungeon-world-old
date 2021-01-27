@@ -8,14 +8,15 @@ namespace DungeonWorld.App
         static Program()
         {
             WinApi.SetConsoleSize(120, 30);
-            WinApi.DeleteMenuButton(SystemMenuItem.SC_MINIMIZE);
-            WinApi.DeleteMenuButton(SystemMenuItem.SC_MAXIMIZE);
-            WinApi.DeleteMenuButton(SystemMenuItem.SC_SIZE);
+            WinApi.DisableMenuItem(SystemMenuItem.SC_MINIMIZE);
+            WinApi.DisableMenuItem(SystemMenuItem.SC_MAXIMIZE);
+            WinApi.DisableMenuItem(SystemMenuItem.SC_SIZE);
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.ReadKey();
         }
     }
 }

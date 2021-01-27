@@ -14,30 +14,60 @@ namespace DungeonWorld.Engine.Utils
 
     public static class WinApi
     {
+        const int STD_OUTPUT_HANDLE = -11;
+        const int ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
+        const int MF_BYCOMMAND = 0x0000;
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern IntPtr GetStdHandle(int handle);
+        // https://docs.microsoft.com/en-us/windows/console/getstdhandle
+
         [DllImport("kernel32.dll", ExactSpelling = true)]
         static extern IntPtr GetConsoleWindow();
         // https://docs.microsoft.com/en-us/windows/console/getconsolewindow
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool GetConsoleMode(IntPtr handle, out int mode);
+        // https://docs.microsoft.com/en-us/windows/console/getconsolemode
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool SetConsoleMode(IntPtr hConsoleHandle, int mode);
+        // https://docs.microsoft.com/en-us/windows/console/setconsolemode
 
         [DllImport("user32.dll")]
         static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmenu
 
-
         [DllImport("user32.dll")]
         static extern int DeleteMenu(IntPtr hMenu, int nPosition, int wFlags);
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-deletemenu
 
+        static IntPtr stdHwnd = IntPtr.Zero;
         static IntPtr consoleHwnd = IntPtr.Zero;
         static IntPtr systemMenu = IntPtr.Zero;
 
         static WinApi()
         {
+            stdHwnd = GetStdHandle(STD_OUTPUT_HANDLE);
             consoleHwnd = GetConsoleWindow();
 
             if (consoleHwnd != IntPtr.Zero)
             {
+                // get system menu for disabling window buttons
                 systemMenu = GetSystemMenu(consoleHwnd, false);
             }
+        }
+
+        public static void EnableVT100Codes()
+        {
+            if (stdHwnd != IntPtr.Zero)
+            {
+                return;
+            }
+
+            int mode;
+            GetConsoleMode(stdHwnd, out mode);
+            SetConsoleMode(stdHwnd, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
         }
 
         public static void SetConsoleSize(int width, int height)
@@ -46,10 +76,8 @@ namespace DungeonWorld.Engine.Utils
             Console.SetBufferSize(width, height);
         }
 
-        public static void DeleteMenuButton(SystemMenuItem item)
+        public static void DisableMenuItem(SystemMenuItem item)
         {
-            int MF_BYCOMMAND = 0x00000000;
-
             if (systemMenu != IntPtr.Zero)
             {
                 DeleteMenu(systemMenu, (int)item, MF_BYCOMMAND);
