@@ -19,7 +19,7 @@
 
         public TextStyle()
         {
-            ColorFront = new RGB();
+            ColorFront = new RGB(0, 0, 0);
             ColorBack = new RGB(255, 255, 255);
             Style = TextStyles.None;
         }

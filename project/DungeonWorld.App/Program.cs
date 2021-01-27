@@ -10,7 +10,7 @@ namespace DungeonWorld.App
         {
             if (!WinApi.IsSupportedPlatform())
             {
-                Console.WriteLine("Windows version older than Windows 10 Anniversary update are not supported.");
+                Console.WriteLine("Windows versions older than Windows 10 Anniversary update are not supported.");
                 Console.ReadKey();
                 Environment.Exit(0);
             }

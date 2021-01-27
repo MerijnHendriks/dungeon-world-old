@@ -22,7 +22,7 @@ namespace DungeonWorld.Engine.Utils
         public static extern IntPtr GetStdHandle(int handle);
         // https://docs.microsoft.com/en-us/windows/console/getstdhandle
 
-        [DllImport("kernel32.dll", ExactSpelling = true)]
+        [DllImport("kernel32.dll", SetLastError = true)]
         static extern IntPtr GetConsoleWindow();
         // https://docs.microsoft.com/en-us/windows/console/getconsolewindow
 
@@ -34,11 +34,11 @@ namespace DungeonWorld.Engine.Utils
         static extern bool SetConsoleMode(IntPtr hConsoleHandle, int mode);
         // https://docs.microsoft.com/en-us/windows/console/setconsolemode
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmenu
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         static extern int DeleteMenu(IntPtr hMenu, int nPosition, int wFlags);
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-deletemenu
 
