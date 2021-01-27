@@ -1,4 +1,5 @@
 ﻿using System;
+using DungeonWorld.Engine.Models;
 using DungeonWorld.Engine.Utils;
 
 namespace DungeonWorld.App
@@ -23,8 +24,11 @@ namespace DungeonWorld.App
 
         static void Main(string[] args)
         {
-            ConsoleUtil.WriteBorder(0, 0, 119, 29);
-            ConsoleUtil.WritePosition("Hello World!", 20, 20);
+            TextStyle style = new TextStyle(new RGB(200, 200, 100), new RGB(100, 100, 60), TextStyles.Bold);
+
+            ConsoleUtil.WriteBorder(10, 5, 50, 20);
+            ConsoleUtil.WritePosition("Hello World!", 20, 20, style);
+
             Console.ReadKey();
         }
     }
