@@ -23,7 +23,8 @@ namespace DungeonWorld.App
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ConsoleUtil.WriteLine("Hello World!", colorFront: new RGB(200, 200, 100));
+            ConsoleUtil.ResetStyling();
             Console.ReadKey();
         }
     }
