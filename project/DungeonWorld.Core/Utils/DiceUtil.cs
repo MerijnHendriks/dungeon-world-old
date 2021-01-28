@@ -32,5 +32,23 @@ namespace DungeonWorld.Core.Utils
 
             return result;
         }
+
+        // based on Dungeon World playbook
+        public static DiceResult GetResult()
+        {
+            int result = Roll("2d6");
+
+            if (result <= 6)
+            {
+                return DiceResult.Failure;
+            }
+
+            if (result <= 9)
+            {
+                return DiceResult.Partial;
+            }
+
+            return DiceResult.Success;
+        }
     }
 }

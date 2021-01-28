@@ -24,6 +24,7 @@
             return attributes[(int)attribute];
         }
 
+        // based on Dungeon World playbook
         int GetModifier(int attribute)
         {
             // -inf to 3
