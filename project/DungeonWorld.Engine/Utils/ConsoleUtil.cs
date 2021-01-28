@@ -6,7 +6,7 @@ namespace DungeonWorld.Engine.Utils
 {
     public static class ConsoleUtil
     {
-        static int[] GetRGB(string hex)
+        private static int[] GetRGB(string hex)
         {
             hex = hex.Replace("#", "");
 
@@ -18,7 +18,7 @@ namespace DungeonWorld.Engine.Utils
             };
         }
 
-        static string GetFormattedString(string text, TextStyle style = null)
+        private static string GetFormattedString(string text, TextStyle style = null)
         {
             string result = "";
 

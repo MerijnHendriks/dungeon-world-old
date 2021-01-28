@@ -11,7 +11,7 @@ namespace DungeonWorld.Core.Utils
 
     public static class DiceUtil
     {
-        static Random random;
+        private static Random random;
 
         static DiceUtil()
         {

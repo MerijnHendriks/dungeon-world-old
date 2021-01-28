@@ -5,7 +5,7 @@ namespace DungeonWorld.Engine.Systems
 {
     public static class SystemManager
     {
-        static TypeList<ISystem> list;
+        private static TypeList<ISystem> list;
 
         static SystemManager()
         {

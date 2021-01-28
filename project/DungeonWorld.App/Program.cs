@@ -6,7 +6,7 @@ using DungeonWorld.App.Views;
 
 namespace DungeonWorld.App
 {
-    static class Program
+    public static class Program
     {
         static Program()
         {
@@ -24,7 +24,7 @@ namespace DungeonWorld.App
             WinApi.SetConsoleSize(120, 30);
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // add systems
             SystemManager.Add<CommandSystem>();

@@ -2,12 +2,12 @@
 {
     public class Attributes
     {
-        int Strength;
-        int Dexterity;
-        int Constitution;
-        int Intelligence;
-        int Wisdom;
-        int Charisma;
+        public int Strength;
+        public int Dexterity;
+        public int Constitution;
+        public int Intelligence;
+        public int Wisdom;
+        public int Charisma;
 
         public Attributes(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
         {
@@ -20,7 +20,7 @@
         }
 
         // based on Dungeon World playbook
-        static int GetModifier(int attribute)
+        public static int GetModifier(int attribute)
         {
             // -inf to 3
             if (attribute <= 3)
