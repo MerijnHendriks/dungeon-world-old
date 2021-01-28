@@ -77,3 +77,47 @@ You can only assign each level once.
 - 12
 - 9
 - 8
+
+## Actions
+
+These can be done under various scenarios.
+
+### Make camp
+
+**Property** | **Value**
+------------ | --------------------------------------------
+Cost         | 1 `trvl`
+Conditions   | Outside combat
+
+```unformatted
+Rest
+```
+
+### Hack & Slash
+
+**Property** | **Value**
+------------ | ---------------------------------------------------
+Type         | Melee attack
+Cost         | None
+Conditions   | Close range, Target, Enemy must be ready for combat
+
+```unformatted
+damage = physical (classBaseDamage + bonus)
+result = roll + (weapon == precise) ? dex : str
+doDamage = (partial || success) ? true : false
+
+if (success)
+   choose
+   1: "attack with normal damage and dodge"
+   2: "attack with extra damage"
+
+for (enemies)
+    if (inRange && doDamage && !physicalResistant)
+        enemy -= damage
+
+    if (success option 2)
+        enemy -= 1d6
+
+if (failure || partial || success option 2)
+    enemy (target) attacks
+```
