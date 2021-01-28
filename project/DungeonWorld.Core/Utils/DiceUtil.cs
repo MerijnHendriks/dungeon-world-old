@@ -38,17 +38,20 @@ namespace DungeonWorld.Core.Utils
         {
             int result = Roll("2d6");
 
-            if (result <= 6)
+            // 10 to 12
+            if (result > 9)
             {
-                return DiceResult.Failure;
+                return DiceResult.Success;
             }
 
-            if (result <= 9)
+            // 7 to 9
+            if (result > 6)
             {
                 return DiceResult.Partial;
             }
 
-            return DiceResult.Success;
+            // 1 to 6
+            return DiceResult.Failure;
         }
     }
 }

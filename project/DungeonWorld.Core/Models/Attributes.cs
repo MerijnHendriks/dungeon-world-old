@@ -22,44 +22,44 @@
         // based on Dungeon World playbook
         public static int GetModifier(int attribute)
         {
-            // -inf to 3
-            if (attribute <= 3)
+            // 18 to 20
+            if (attribute > 17)
             {
-                return -3;
+                return 3;
             }
 
-            // 4 to 5
-            if (attribute <= 5)
+            // 15 to 17
+            if (attribute > 15)
             {
-                return -2;
+                return 2;
             }
-
-            // 6 to 8
-            if (attribute <= 8)
-            {
-                return -1;
-            }
-
-            // 9 to 12
-            if (attribute <= 12)
-            {
-                return 0;
-            }
-
-            // 13 to 15
-            if (attribute <= 15)
+            
+            // 13 to 14
+            if (attribute > 12)
             {
                 return 1;
             }
 
-            // 16 to 17
-            if (attribute <= 17)
+            // 9 to 12
+            if (attribute > 8)
             {
-                return 2;
+                return 1;
             }
 
-            // 18 to +inf
-            return 3;
+            // 7 to 8
+            if (attribute > 8)
+            {
+                return -1;
+            }
+
+            // 4 to 6
+            if (attribute > 3)
+            {
+                return -2;
+            }
+
+            // 3 to 1
+            return -3;
         }
     }
 }
