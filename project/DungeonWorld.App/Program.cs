@@ -28,11 +28,17 @@ namespace DungeonWorld.App
         {
             // add systems
             SystemManager.Add<CommandSystem>();
+            SystemManager.Add<AudioSystem>();
             SystemManager.Add<ViewSystem>();
 
             // add commands
             CommandSystem commands = SystemManager.Get<CommandSystem>();
             commands.Add<ExitCommand>();
+
+            // add audio
+            AudioSystem audio = SystemManager.Get<AudioSystem>();
+            audio.Add("test", "assets/audio/test.wav");
+            audio.Play("test", true);
 
             // add views
             ViewSystem views = SystemManager.Get<ViewSystem>();

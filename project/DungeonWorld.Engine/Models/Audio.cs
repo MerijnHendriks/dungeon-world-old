@@ -4,34 +4,13 @@ namespace DungeonWorld.Engine.Models
 {
     public class Audio
     {
-        private SoundPlayer source;
-        public bool IsPlaying { get; private set; }
+        public bool IsPlaying;
+        public SoundPlayer Source;
 
         public Audio(string filepath)
         {
             IsPlaying = false;
-            source = new SoundPlayer(filepath);
-            source.Load();
-        }
-
-        public void Play(bool loop)
-        {
-            if (loop)
-            {
-                source.PlayLooping();
-            }
-            else
-            {
-                source.Play();
-            }
-
-            IsPlaying = true;
-        }
-
-        public void Stop()
-        {
-            source.Stop();
-            IsPlaying = false;
+            Source = new SoundPlayer(filepath);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using DungeonWorld.Engine.Interfaces;
 using DungeonWorld.Engine.Models;
 
@@ -13,13 +11,6 @@ namespace DungeonWorld.Engine.Systems
         public AudioSystem()
         {
             list = new Dictionary<string, Audio>();
-
-            FileInfo[] files = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, "assets/audio/")).GetFiles();
-
-            foreach (FileInfo file in files)
-            {
-                Import(file.Name, file.FullName);
-            }
         }
 
         public void OnUpdate()
@@ -27,19 +18,35 @@ namespace DungeonWorld.Engine.Systems
             // ISystem
         }
 
-        public void Import(string name, string filepath)
+        public Audio Get(string name)
+        {
+            return list[name];
+        }
+
+        public void Add(string name, string filepath)
         {
             list[name] = new Audio(filepath);
+            list[name].Source.Load();
         }
 
         public void Play(string name, bool loop)
         {
-            list[name].Play(loop);
+            if (loop)
+            {
+                list[name].Source.PlayLooping();
+            }
+            else
+            {
+                list[name].Source.Play();
+            }
+
+            list[name].IsPlaying = true;
         }
 
         public void Stop(string name)
         {
-            list[name].Stop();
+            list[name].Source.Stop();
+            list[name].IsPlaying = false;
         }
 
         public bool IsPlaying(string name)
