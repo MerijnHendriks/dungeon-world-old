@@ -24,7 +24,7 @@ namespace DungeonWorld.App
 
         static void Main(string[] args)
         {
-            TextStyle style = new TextStyle(new RGB(200, 200, 100), new RGB(100, 100, 60), TextStyles.Bold);
+            TextStyle style = new TextStyle("#c8c864", "#64643c", TextStyles.Underlined);
 
             ConsoleUtil.WriteBorder(10, 5, 50, 20);
             ConsoleUtil.WritePosition("Hello World!", 20, 20, style);

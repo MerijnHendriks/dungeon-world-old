@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DungeonWorld.Core\DungeonWorld.Core.csproj" />
     <ProjectReference Include="..\DungeonWorld.Engine\DungeonWorld.Engine.csproj" />
   </ItemGroup>
 

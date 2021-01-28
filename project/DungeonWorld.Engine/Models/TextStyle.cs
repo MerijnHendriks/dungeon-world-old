@@ -13,18 +13,18 @@
 
     public class TextStyle
     {
-        public RGB ColorFront;
-        public RGB ColorBack;
+        public string ColorFront;
+        public string ColorBack;
         public TextStyles Style;
 
         public TextStyle()
         {
-            ColorFront = new RGB(0, 0, 0);
-            ColorBack = new RGB(255, 255, 255);
+            ColorFront = "#000000";
+            ColorBack = "#FFFFFF";
             Style = TextStyles.None;
         }
 
-        public TextStyle(RGB colorFront, RGB colorBack, TextStyles style)
+        public TextStyle(string colorFront, string colorBack, TextStyles style)
         {
             ColorFront = colorFront;
             ColorBack = colorBack;

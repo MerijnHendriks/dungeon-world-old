@@ -1,10 +1,23 @@
 ﻿using System;
+using System.Globalization;
 using DungeonWorld.Engine.Models;
 
 namespace DungeonWorld.Engine.Utils
 {
     public static class ConsoleUtil
     {
+        static int[] GetRGB(string hex)
+        {
+            hex = hex.Replace("#", "");
+
+            return new int[3]
+            {
+                byte.Parse(hex.Substring(0, 2), NumberStyles.AllowHexSpecifier),
+                byte.Parse(hex.Substring(2, 2), NumberStyles.AllowHexSpecifier),
+                byte.Parse(hex.Substring(4, 2), NumberStyles.AllowHexSpecifier)
+            };
+        }
+
         static string GetFormattedString(string text, TextStyle style = null)
         {
             string result = "";
@@ -15,20 +28,24 @@ namespace DungeonWorld.Engine.Utils
                 return text;
             }
 
-            // set styling
-            result += $"\x1b[{(int)style.Style}m";
-
-            // set front color
-            if (style.ColorBack != null)
-            {
-                result += $"\x1b[48;2;{style.ColorBack.Red};{style.ColorBack.Green};{style.ColorBack.Blue}m";
-            }
+            result += $"\x1b[";
 
             // set back color
-            if (style.ColorFront != null)
+            if (!string.IsNullOrWhiteSpace(style.ColorFront))
             {
-                result += $"\x1b[38;2;{style.ColorFront.Red};{style.ColorFront.Green};{style.ColorFront.Blue}m";
+                int[] rgb = GetRGB(style.ColorFront);
+                result += $";38;2;{rgb[0]};{rgb[1]};{rgb[2]}";
             }
+
+            // set front color
+            if (!string.IsNullOrWhiteSpace(style.ColorBack))
+            {
+                int[] rgb = GetRGB(style.ColorBack);
+                result += $";48;2;{rgb[0]};{rgb[1]};{rgb[2]}";
+            }
+
+            // add style
+            result += $";{(int)style.Style}m";
 
             // add text
             result += text;
@@ -94,6 +111,16 @@ namespace DungeonWorld.Engine.Utils
         public static void WriteBorder(Box box, BorderStyle border = null, TextStyle style = null)
         {
             WriteBorder(box.X, box.Y, box.Width, box.Height, border, style);
+        }
+
+        public static int GetWidth()
+        {
+            return Console.WindowWidth;
+        }
+
+        public static int GetHeight()
+        {
+            return Console.WindowHeight;
         }
     }
 }
