@@ -10,11 +10,19 @@ namespace DungeonWorld.Engine.Models
         {
             source = new SoundPlayer(filepath);
             source.Load();
+            source.
         }
 
-        public void Play()
+        public void Play(bool loop)
         {
-            source.Play();
+            if (loop)
+            {
+                source.PlayLooping();
+            }
+            else
+            {
+                source.Play();
+            }
         }
 
         public void Stop()
