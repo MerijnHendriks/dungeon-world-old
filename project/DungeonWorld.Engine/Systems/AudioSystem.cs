@@ -42,12 +42,9 @@ namespace DungeonWorld.Engine.Systems
             list[name].Stop();
         }
 
-        public void StopAll()
+        public bool IsPlaying(string name)
         {
-            foreach (KeyValuePair<string, Audio> item in list)
-            {
-                item.Value.Stop();
-            }
+            return list[name].IsPlaying;
         }
     }
 }
