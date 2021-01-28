@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonWorld.App", "DungeonWorld.App\DungeonWorld.App.csproj", "{EC1C2F65-A682-4B69-90BF-10C3945E01B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonWorld.Engine", "DungeonWorld.Engine\DungeonWorld.Engine.csproj", "{1A97E266-C43D-4735-974C-D7A74FFD9365}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonWorld.Engine", "DungeonWorld.Engine\DungeonWorld.Engine.csproj", "{1A97E266-C43D-4735-974C-D7A74FFD9365}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonWorld.Core", "DungeonWorld.Core\DungeonWorld.Core.csproj", "{3D7A1304-4B00-4884-93A4-1F68B9094B63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1A97E266-C43D-4735-974C-D7A74FFD9365}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A97E266-C43D-4735-974C-D7A74FFD9365}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A97E266-C43D-4735-974C-D7A74FFD9365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D7A1304-4B00-4884-93A4-1F68B9094B63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D7A1304-4B00-4884-93A4-1F68B9094B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D7A1304-4B00-4884-93A4-1F68B9094B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D7A1304-4B00-4884-93A4-1F68B9094B63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
