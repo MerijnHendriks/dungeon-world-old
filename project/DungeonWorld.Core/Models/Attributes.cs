@@ -20,40 +20,69 @@
         }
 
         // based on Dungeon World playbook
-        public static int GetModifier(int attribute)
+        public int GetModifier(string attribute)
         {
+            int value = 0;
+
+            switch (attribute)
+            {
+                case "str":
+                    value = Strength;
+                    break;
+
+                case "con":
+                    value = Constitution;
+                    break;
+
+                case "dex":
+                    value = Dexterity;
+                    break;
+
+                case "wis":
+                    value = Wisdom;
+                    break;
+
+                case "int":
+                    value = Intelligence;
+                    break;
+
+                case "cha":
+                    value = Charisma;
+                    break;
+            }
+
             // 18 to 20
-            if (attribute > 17)
+            if (value > 17)
             {
                 return 3;
             }
 
             // 15 to 17
-            if (attribute > 15)
+            if (value > 15)
             {
                 return 2;
             }
             
             // 13 to 14
-            if (attribute > 12)
+            if (value > 12)
             {
                 return 1;
             }
 
             // 9 to 12
-            if (attribute > 8)
+            if (value > 8)
             {
                 return 1;
             }
 
             // 7 to 8
-            if (attribute > 8)
+            if (value > 8)
             {
                 return -1;
             }
 
             // 4 to 6
-            if (attribute > 3)
+            if (value > 3)
             {
                 return -2;
             }

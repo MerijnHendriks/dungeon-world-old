@@ -9,8 +9,8 @@ Depending on the roll's result, you get one of the following outcomes:
 
 **Range** | **Result**
 ----------| ---------
- 2 - 6    | Failure
- 7 - 9    | Partial
+2 - 6     | Failure
+7 - 9     | Partial
 10 - 12   | Success
 
 ## Stats
@@ -46,25 +46,25 @@ Attributes cannot be lower than 1 or higher than 20.
 **Attribute** | **Abbr** | **Function**
 ------------- | -------- | ------------
 Strength      | str      | Handling weapons
-Dexterity     | dex      | Speed and athletics
 Constitution  | con      | Healthiness
+Dexterity     | dex      | Speed and athletics
 Intelligence  | int      | Knowledge
 Wisdon        | wis      | Common sense
-Charisma      | chr      | Persuasion
+Charisma      | cha      | Persuasion
 
 #### Modifier
 
 The modifier added to rolls of that attribute is applied depending on the attribute level:
 
 **Range** | **Value**
---------- | -------
- 1 - 3    | -3
- 4 - 5    | -2
- 6 - 8    | -1
- 9 - 12   |  0
+--------- | ---------
+3         | -3
+4 - 5     | -2
+6 - 8     | -1
+9 - 12    |  0
 13 - 15   | +1
 16 - 17   | +2
-18 - 20   | +3
+18        | +3
 
 #### Character creation
 

@@ -1,5 +1,7 @@
 ﻿using System;
 
+using DungeonWorld.Core.Models;
+
 namespace DungeonWorld.Core.Utils
 {
     public enum DiceResult
@@ -18,11 +20,8 @@ namespace DungeonWorld.Core.Utils
             random = new Random();
         }
 
-        public static int Roll(string dice)
+        private static int Roll(int count, int sides, int modifier)
         {
-            string[] split = dice.Split('d');
-            int count = Convert.ToInt32(split[0]);
-            int sides = Convert.ToInt32(split[1]);
             int result = 0;
 
             for (int i = 0; i < count; i++)
@@ -30,13 +29,30 @@ namespace DungeonWorld.Core.Utils
                 result += random.Next(1, sides + 1);
             }
 
-            return result;
+            return result + modifier;
+        }
+
+        public static int Roll(string dice = "2d6", Attributes attributes = null)
+        {
+            // get dice
+            int count = Convert.ToInt32(dice.Split('d')[0]);
+            int sides = Convert.ToInt32(dice.Split('d')[1]);
+            
+            // get modifier
+            int modifier = 0;
+
+            if (dice.Contains('+'))
+            {
+                modifier = attributes.GetModifier(dice.Split('+')[1]);
+            }
+
+            return Roll(count, sides, modifier);
         }
 
         // based on Dungeon World playbook
-        public static DiceResult GetResult()
+        public static DiceResult GetResult(string attribute = "")
         {
-            int result = Roll("2d6");
+            int result = Roll((!string.IsNullOrWhiteSpace(attribute)) ? $"2d6+{attribute}" : "2d6");
 
             // 10 to 12
             if (result > 9)
@@ -50,7 +66,7 @@ namespace DungeonWorld.Core.Utils
                 return DiceResult.Partial;
             }
 
-            // 1 to 6
+            // 2 to 6
             return DiceResult.Failure;
         }
     }
