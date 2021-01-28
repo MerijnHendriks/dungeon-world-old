@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DungeonWorld.Engine.Interfaces;
 using DungeonWorld.Engine.Models;
 
-namespace App.Core.System
+namespace DungeonWorld.Engine.Systems
 {
     public class ViewSystem : ISystem
     {
@@ -20,7 +20,7 @@ namespace App.Core.System
 
         public void OnUpdate()
         {
-            // required by ISystem
+            DrawView(current);
         }
 
         public T Get<T>() where T : IView

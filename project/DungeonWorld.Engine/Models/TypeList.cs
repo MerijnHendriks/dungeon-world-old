@@ -9,7 +9,10 @@ namespace DungeonWorld.Engine.Models
 
         public int Count
         {
-            get { return list.Count; }
+            get
+            {
+                return list.Count;
+            }
         }
 
         public TypeList()

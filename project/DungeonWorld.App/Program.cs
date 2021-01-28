@@ -1,7 +1,8 @@
 ﻿using System;
-using DungeonWorld.Engine.Models;
 using DungeonWorld.Engine.Utils;
-using DungeonWorld.Core.Utils;
+using DungeonWorld.Engine.Systems;
+using DungeonWorld.App.Commands;
+using DungeonWorld.App.Views;
 
 namespace DungeonWorld.App
 {
@@ -25,15 +26,26 @@ namespace DungeonWorld.App
 
         static void Main(string[] args)
         {
-            TextStyle style = new TextStyle("#c8c864", "#64643c", TextStyles.Underlined);
-            Box border = new Box(10, 5, 50, 20);
-            Coord text1 = new Coord(20, 20);
-            Coord text2 = new Coord(20, 21);
+            // add systems
+            SystemManager.Add<CommandSystem>();
+            SystemManager.Add<ViewSystem>();
 
-            ConsoleUtil.WriteBorder(border);
-            ConsoleUtil.WritePosition("Hello World!", text1, style);
-            ConsoleUtil.WritePosition($"{DiceUtil.GetResult()}", text2, style);
-            Console.ReadKey();
+            // add commands
+            CommandSystem commands = SystemManager.Get<CommandSystem>();
+            commands.Add<ExitCommand>();
+
+            // add views
+            ViewSystem views = SystemManager.Get<ViewSystem>();
+            views.Add<TestView>();
+
+            // show test
+            SystemManager.Get<ViewSystem>().SetView<TestView>();
+
+            // app loop
+            while (!commands.Get<ExitCommand>().Executing)
+            {
+                SystemManager.OnUpdate();
+            }
         }
     }
 }
