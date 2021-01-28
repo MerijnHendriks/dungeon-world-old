@@ -75,7 +75,7 @@ namespace DungeonWorld.Engine.Utils
             Console.Write(GetFormattedString(text, style));
         }
 
-        public static void WritePosition(string text, Position position, TextStyle style = null)
+        public static void WritePosition(string text, Coord position, TextStyle style = null)
         {
             WritePosition(text, position.X, position.Y, style);
         }

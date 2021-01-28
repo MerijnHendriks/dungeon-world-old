@@ -11,7 +11,7 @@ namespace DungeonWorld.Core.Utils
             return map.Colliders[y, x];
         }
 
-        public static bool Intersects(Map map, Position position)
+        public static bool Intersects(Map map, Coord position)
         {
             return Intersects(map, position.Y, position.X);
         }

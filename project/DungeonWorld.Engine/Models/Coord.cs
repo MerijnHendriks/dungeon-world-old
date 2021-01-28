@@ -1,11 +1,11 @@
 ﻿namespace DungeonWorld.Engine.Models
 {
-    public class Position
+    public class Coord
     {
         public int X;
         public int Y;
 
-        public Position(int x, int y)
+        public Coord(int x, int y)
         {
             X = x;
             Y = y;

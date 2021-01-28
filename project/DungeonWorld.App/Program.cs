@@ -1,6 +1,7 @@
 ﻿using System;
 using DungeonWorld.Engine.Models;
 using DungeonWorld.Engine.Utils;
+using DungeonWorld.Core.Utils;
 
 namespace DungeonWorld.App
 {
@@ -25,10 +26,13 @@ namespace DungeonWorld.App
         static void Main(string[] args)
         {
             TextStyle style = new TextStyle("#c8c864", "#64643c", TextStyles.Underlined);
+            Box border = new Box(10, 5, 50, 20);
+            Coord text1 = new Coord(20, 20);
+            Coord text2 = new Coord(20, 21);
 
-            ConsoleUtil.WriteBorder(10, 5, 50, 20);
-            ConsoleUtil.WritePosition("Hello World!", 20, 20, style);
-
+            ConsoleUtil.WriteBorder(border);
+            ConsoleUtil.WritePosition("Hello World!", text1, style);
+            ConsoleUtil.WritePosition($"{DiceUtil.GetResult()}", text2, style);
             Console.ReadKey();
         }
     }
