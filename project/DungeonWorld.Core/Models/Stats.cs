@@ -1,7 +1,9 @@
 ﻿namespace DungeonWorld.Core.Models
 {
-    public class Attributes
+    public class Stats
     {
+        public int Level;
+        public int Experience;
         public int Strength;
         public int Dexterity;
         public int Constitution;
@@ -9,7 +11,7 @@
         public int Wisdom;
         public int Charisma;
 
-        public Attributes(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
+        public Stats(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
         {
             Strength = strength;
             Dexterity = dexterity;

@@ -39,12 +39,17 @@ Max capacity      | `classBaseCapacity (12)`
 Base damage       | `classBaseDamage (1d10)`
 Armor             | `all item armor combined`
 
+#### Health
+
+HP represents stamina, endurance, and health.  
+Max health never changes unless constitution is permanently (in/de)creased.
+
 ### Attributes
 
 Attributes cannot be lower than 1 or higher than 20.  
 
 **Attribute** | **Abbr** | **Function**
-------------- | -------- | ------------
+------------- | -------- | --------------------
 Strength      | str      | Handling weapons
 Constitution  | con      | Healthiness
 Dexterity     | dex      | Speed and athletics
@@ -77,6 +82,18 @@ You can only assign each level once.
 - 12
 - 9
 - 8
+
+## Movoe effects
+
+**Effect**       | **Function**
+---------------- | -------------------------------------------------------------------------
+Deal damage      | Apply damage to target based on class dmg dice, sometimes includes weapon
+Take `x` forward | Take `x` on the next move roll when condition is met
+Take `x` ongoing | Take `x` on all move roles until it's dismissed
+Hold             | Make a decision later based on scenario described
+Choose           | Pick an option
+Spout lore       | Say somthing about the character or world
+Mark XP          | Add 1 EXP to your total EXP
 
 ## Actions
 

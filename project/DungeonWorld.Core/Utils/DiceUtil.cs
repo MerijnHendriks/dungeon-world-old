@@ -32,7 +32,7 @@ namespace DungeonWorld.Core.Utils
             return result + modifier;
         }
 
-        public static int Roll(string dice = "2d6", Attributes attributes = null)
+        public static int Roll(string dice = "2d6", Stats stats = null)
         {
             // get dice
             int count = Convert.ToInt32(dice.Split('d')[0]);
@@ -43,16 +43,16 @@ namespace DungeonWorld.Core.Utils
 
             if (dice.Contains('+'))
             {
-                modifier = attributes.GetModifier(dice.Split('+')[1]);
+                modifier = stats.GetModifier(dice.Split('+')[1]);
             }
 
             return Roll(count, sides, modifier);
         }
 
         // based on Dungeon World playbook
-        public static DiceResult GetResult(string attribute = "")
+        public static DiceResult GetResult(Stats stats)
         {
-            int result = Roll((!string.IsNullOrWhiteSpace(attribute)) ? $"2d6+{attribute}" : "2d6");
+            int result = Roll("2d6");
 
             // 10 to 12
             if (result > 9)
@@ -67,6 +67,29 @@ namespace DungeonWorld.Core.Utils
             }
 
             // 2 to 6
+            stats.Experience++;
+            return DiceResult.Failure;
+        }
+
+        // based on Dungeon World playbook
+        public static DiceResult GetResult(Stats stats, string attribute = "")
+        {
+            int result = Roll($"2d6+{attribute}");
+
+            // 10 to 12
+            if (result > 9)
+            {
+                return DiceResult.Success;
+            }
+
+            // 7 to 9
+            if (result > 6)
+            {
+                return DiceResult.Partial;
+            }
+
+            // 2 to 6
+            stats.Experience++;
             return DiceResult.Failure;
         }
     }
